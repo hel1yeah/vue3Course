@@ -16,7 +16,9 @@ const App = {
         this.notes.push(this.inputValue);
         this.inputValue = "";
       }
-
+    },
+    deleteNote(i) {
+      this.notes.splice(i, 1);
     },
   },
 };

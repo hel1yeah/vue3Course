@@ -20,12 +20,14 @@
             v-on:keypress.enter="addNote"
           />
         </div>
-        <button class="btn" @click='addNote'>Added</button>
+        <button class="btn" @click="addNote">Added</button>
         <hr />
-        <ul class="list">
-          <li class="list-item" v-for="(note) in notes" :key="note">{{note}}</li>
-
+        <ul class="list" v-if="notes.length !== 0">
+          <li class="list-item" v-for="(note, index) in notes" :key="index">
+            {{index + 1}} - {{note}} <button class="btn danger" @click="deleteNote(index)">delete</button>
+          </li>
         </ul>
+        <div class="div" v-else> notes none, added new Post</div>
       </div>
     </div>
 
