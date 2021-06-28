@@ -3,14 +3,21 @@ const App = {
     return {
       title: "Список заметок ",
       placeholder: "Введите название заметки",
-      inputValue: '',
+      inputValue: "",
+      notes: ["note 1", "sadsad"],
     };
   },
   methods: {
-    inputChangeHandler(e){
-      console.log(e.target.value);
-      this.inputValue = e.target.value
-    }
+    inputChangeHandler(e) {
+      this.inputValue = e.target.value;
+    },
+    addNote() {
+      if (this.inputValue) {
+        this.notes.push(this.inputValue);
+        this.inputValue = "";
+      }
+
+    },
   },
 };
 
