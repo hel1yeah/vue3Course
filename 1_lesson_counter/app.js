@@ -12,8 +12,8 @@ const App = {
       this.inputValue = e.target.value;
     },
     addNote() {
-      if (this.inputValue) {
-        this.notes.push(this.inputValue);
+      if (this.inputValue.trim()) {
+        this.notes.push(this.inputValue.toUpperCase());
         this.inputValue = "";
       }
     },
