@@ -8,13 +8,20 @@
     <link rel="stylesheet" href="./theme.css" />
   </head>
   <body>
-    <div class="container pt-5" id="app">
-      <div class="card center">
-        <h1>{{title}}: {{ counter }}</h1>
-        <div>
-          <button class="btn primary" @click='increment()'>+</button>
-          <button class="btn danger" @click='increment()'>-</button>
+    <div class="container" id="app">
+      <div class="card">
+        <h1>{{title}}</h1>
+        <div class="form-control">
+          <input
+            type="text"
+            v-bind:placeholder="placeholder"
+            :value="inputValue"
+            v-on:input="inputChangeHandler"
+          />
         </div>
+        <h2>inputValue: {{inputValue}}</h2>
+
+        <button class="btn">Added</button>
       </div>
     </div>
 

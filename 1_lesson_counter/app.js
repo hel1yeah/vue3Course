@@ -1,17 +1,16 @@
 const App = {
   data() {
     return {
-      counter: 0,
-      title: "счётчик",
+      title: "Список заметок ",
+      placeholder: "Введите название заметки",
+      inputValue: '',
     };
   },
   methods: {
-    increment() {
-      this.counter++;
-    },
-    decrement() {
-      this.counter--;
-    },
+    inputChangeHandler(e){
+      console.log(e.target.value);
+      this.inputValue = e.target.value
+    }
   },
 };
 
