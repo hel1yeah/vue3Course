@@ -8,24 +8,25 @@ const App = {
     };
   },
   methods: {
-    inputChangeHandler(e) {
-      this.inputValue = e.target.value;
-    },
     addNote() {
-        this.notes.push(this.inputValue.toUpperCase());
-        this.inputValue = "";
+      this.notes.push(this.inputValue.toUpperCase());
+      this.inputValue = "";
     },
     deleteNote(i) {
       this.notes.splice(i, 1);
     },
-    doubleCount(){
-      return this.notes.length * 2
-    }
   },
   computed: {
-    doubleCountComputed(){
-      return this.notes.length * 2
-    }
+    doubleCountComputed() {
+      return this.notes.length * 2;
+    },
+  },
+  watch: {
+    inputValue(value) {
+      if (value.length > 10) {
+        this.inputValue = " ";
+      }
+    },
   },
 };
 

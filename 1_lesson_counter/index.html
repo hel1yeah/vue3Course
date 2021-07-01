@@ -15,8 +15,7 @@
           <input
             type="text"
             v-bind:placeholder="placeholder"
-            :value="inputValue"
-            @:input="inputChangeHandler"
+            v-model="inputValue"
             @:keypress.enter="addNote"
           />
         </div>
