@@ -13,12 +13,13 @@ Vue.createApp({
   methods: {
     addItem() {
       this.items.unshift(this.$refs.myInput.value);
-      this.$refs.myInput.value = "";
+      console.log(this.$refs.myInput.value);
+      this.$refs.myInput.value = " ";
     },
   },
   computed: {
-    eventItems() {
-      return this.items.filter((i) => i % 2 === 0);
-    },
+    // eventItems() {
+    // return this.items.filter((i) => i % 2 === 0);
+    // },
   },
 }).mount("#app");

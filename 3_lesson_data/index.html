@@ -15,13 +15,13 @@
         <h2 v-pre>{{title}}</h2>
          <button class="btn" @click="title = 'new text'">new text</button> -->
          <div class="form-control">
-           <input type="text" @keyup="addItem" ref="myInput">
+           <input type="text" @keyup.enter="addItem" ref="myInput">
          </div>
 
         <ul class="list" v-if="items.length">
           <li
             class="list-item"
-            v-for="(item, index) in eventItems"
+            v-for="(item, index) in items"
             :key="item"
             @click.stop="items.splice(index, 1)"
           >
