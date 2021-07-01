@@ -12,14 +12,20 @@ const App = {
       this.inputValue = e.target.value;
     },
     addNote() {
-      if (this.inputValue.trim()) {
         this.notes.push(this.inputValue.toUpperCase());
         this.inputValue = "";
-      }
     },
     deleteNote(i) {
       this.notes.splice(i, 1);
     },
+    doubleCount(){
+      return this.notes.length * 2
+    }
+  },
+  computed: {
+    doubleCountComputed(){
+      return this.notes.length * 2
+    }
   },
 };
 
