@@ -16,6 +16,9 @@ Vue.createApp({
       console.log(this.$refs.myInput.value);
       this.$refs.myInput.value = " ";
     },
+    log(event){
+      console.log(event);
+    }
   },
   computed: {
     // eventItems() {

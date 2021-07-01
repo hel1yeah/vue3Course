@@ -15,7 +15,7 @@
         <h2 v-pre>{{title}}</h2>
          <button class="btn" @click="title = 'new text'">new text</button> -->
          <div class="form-control">
-           <input type="text" @keyup.enter="addItem" ref="myInput">
+           <input type="text" @keyup.enter="addItem(), log($event)" ref="myInput">
          </div>
 
         <ul class="list" v-if="items.length">
