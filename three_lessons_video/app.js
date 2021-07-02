@@ -43,16 +43,16 @@ const app = Vue.createApp({
     console.log("mounted");
   },
   beforeUnmount() {
-    console.log('beforeUnmount');
+    console.log("beforeUnmount");
   },
   unmounted() {
-    console.log('unmounted')
+    console.log("unmounted");
   },
   beforeUpdate() {
-    console.log('beforeUpdate');
+    console.log("beforeUpdate");
   },
   updated() {
-    console.log('updated')
+    console.log("updated");
   },
 });
 
@@ -60,5 +60,15 @@ const app = Vue.createApp({
 //   app.unmount()
 // }, 2000);
 
-
 app.mount("#app");
+
+const app2 = Vue.createApp({
+  data() {
+    return {
+      title: 'test title app2 '
+    }
+  },
+})
+
+app2.mount("#app2");
+
