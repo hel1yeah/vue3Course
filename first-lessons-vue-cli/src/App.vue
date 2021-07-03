@@ -3,8 +3,15 @@
     <div class="card">
       <h2>Актуальные новости {{ now }}</h2>
     </div>
-    
-    <app-news></app-news>
+
+    <app-news
+      v-for="item in news"
+      :key="item.id"
+      :title="item.title"
+      :id="item.id"
+      :is-open="item.isOpen"
+    >
+    </app-news>
   </div>
 </template>
 
@@ -19,8 +26,11 @@ export default {
   data() {
     return {
       now: new Date().toLocaleDateString(),
-      isOpen: false,
-      news: ["Первая новость ", "2 новость ", "3 новость "],
+      news: [
+        { title: "Первая новость", id: 1, isOpen: false },
+        { title: "вторая новость", id: 2, isOpen: false },
+        { title: "третяя новость", id: 3, isOpen: false },
+      ],
     };
   },
 };
