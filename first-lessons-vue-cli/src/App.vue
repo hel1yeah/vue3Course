@@ -13,8 +13,10 @@
       :is-open="item.isOpen"
       :read-rate="readRate"
       :was-read="item.wasRead"
+      :news="news"
       @open-news="openNews"
       @read-new="readNew"
+      @unmark="unmark"
     >
     </app-news>
   </div>
@@ -56,6 +58,12 @@ export default {
       ],
     };
   },
+  provide() {
+    return {
+      title: "app provide",
+      news: this.news,
+    };
+  },
   methods: {
     openNews() {
       this.openRate++;
@@ -65,8 +73,17 @@ export default {
       this.news[index].wasRead = true;
       this.readRate++;
     },
+    unmark(id) {
+      const index = this.news.findIndex((news) => news.id === id);
+      this.news[index].wasRead = false;
+      this.readRate--;
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+h2 {
+  color: red;
+}
+</style>

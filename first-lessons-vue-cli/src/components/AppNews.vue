@@ -1,24 +1,38 @@
 <template>
   <div class="card">
-    <h3>{{ title }}</h3>
-    <button class="btn" @click="open">
+    <h2>{{ title }}</h2>
+    <app-button @action="open">
       {{ isNewsOpen ? "Закрыть" : "Открыть" }}
-    </button>
+    </app-button>
+    <app-button classBtn="danger" v-if="wasRead" @action="unmark"
+      >Отметить как не прочитаное
+    </app-button>
     <div v-if="isNewsOpen">
       <p>
         Далеко-далеко за словесными горами, в стране гласных и согласных живут
         рыбные тексты. Маленький, вершину? Единственное грустный переписывается
         грамматики?
       </p>
-      <button class="btn primary" v-if="!wasRead" :disabled="dis" @click.once="readNew">
-        Прочёл новость
-      </button>
+      <app-button
+        classBtn="primary"
+        v-if="!wasRead"
+        :disabled="dis"
+        @action="readNew"
+        >Прочёл новость
+      </app-button>
+      <app-news-list></app-news-list>
     </div>
   </div>
 </template>
 
 <script>
+import AppButton from "@/components/AppButton.vue";
+import AppNewsList from "@/components/AppNewsList.vue";
 export default {
+  components: {
+    AppButton,
+    AppNewsList,
+  },
   props: {
     title: {
       required: true,
@@ -40,6 +54,7 @@ export default {
       type: Boolean,
       required: true,
     },
+    news: Array,
   },
   emits: {
     "open-news"(num) {
@@ -50,6 +65,13 @@ export default {
       return false;
     },
     "read-new"(id) {
+      if (id) {
+        return true;
+      }
+      console.warn("no id");
+      return false;
+    },
+    unmark(id) {
       if (id) {
         return true;
       }
@@ -74,6 +96,9 @@ export default {
       this.isNewsOpen = !this.isNewsOpen;
       this.$emit("read-new", this.id);
       this.dis = true;
+    },
+    unmark() {
+      this.$emit("unmark", this.id);
     },
   },
 };

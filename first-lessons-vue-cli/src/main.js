@@ -3,7 +3,7 @@ import App from "./App.vue";
 
 import TheHeader from "@/components/TheHeader.vue";
 
-import './theme.css'
+import "./theme.css";
 
 const app = createApp(App);
 
