@@ -2,7 +2,7 @@
   <div class="container pt-1">
     <div class="card">
       <h2>Динамические и асинхронные компоненты</h2>
-      <app-button :classBtn="classOne" @action="active = 'one'">
+      <app-button :classBtn="classOne" @action="active = 'one'" ref="myBtn">
         One
       </app-button>
       <app-button :classBtn="classTwo" @action="active = 'two'">
@@ -30,9 +30,20 @@ export default {
       active: "one",
     };
   },
+  mounted() {
+    console.log(this.$refs.myBtn);
+  },
   computed: {
-    componentName() {
-      return "app-text-" + this.active;
+    // componentName() {
+    //   return "app-text-" + this.active;
+    // },
+    componentName: {
+      get() {
+        return "app-text-" + this.active;
+      },
+      set(value) {
+        console.log("componentName", value);
+      },
     },
     classOne() {
       return this.active === "one" ? "primary" : "";
