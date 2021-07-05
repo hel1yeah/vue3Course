@@ -1,4 +1,5 @@
 <template>
+  <async-component></async-component>
   <div class="container pt-1">
     <div class="card">
       <h2>Динамические и асинхронные компоненты</h2>
