@@ -2,7 +2,7 @@
   <div class="container">
     <form class="card" @submit.prevent="submitHandler">
       <h1>Анкета на Vue разработчика!</h1>
-      <div class="form-control">
+      <div class="form-control" :class="{ invalid: errors.name }">
         <label for="name">Как тебя зовут?</label>
         <input
           type="text"
@@ -10,6 +10,9 @@
           placeholder="Введи имя"
           v-model.trim="name"
         />
+        <small v-if="errors.name" style="color: firebrick">{{
+          errors.name
+        }}</small>
       </div>
 
       <div class="form-control">
@@ -80,7 +83,15 @@
           >
         </div>
       </div>
-
+      <div class="form-checkbox">
+        <div class="lable">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" v-model="agree" /> С правилами ознакомился
+            </label>
+          </div>
+        </div>
+      </div>
       <button type="submit" class="btn primary">Отправить</button>
     </form>
   </div>
@@ -95,29 +106,41 @@ export default {
       city: "nsk",
       relocate: null,
       skillsVue: [],
-
+      agree: false,
+      errors: {
+        name: null,
+      },
     };
   },
   methods: {
     formIsValid() {
       let isValid = true;
-      if (this.name.length !== 0) {
+      if (this.name.length !== 3) {
+        this.errors.name = "Имя должно иметь буквы";
         isValid = false;
+      } else {
+        this.errors.name = null;
       }
+      return isValid;
     },
     submitHandler(e) {
-      // if (this.formIsValid()) {
+      if (this.formIsValid()) {
         console.group("Form data");
         console.log("name", this.name);
         console.log("age", this.age);
         console.log("city", this.city);
         console.log("relocate", this.relocate);
         console.log("skillsVue", this.skillsVue);
+        console.log("agree", this.agree);
         console.groupEnd();
-      // }
+      }
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.form-control.invalid input {
+  border-color: firebrick;
+}
+</style>
