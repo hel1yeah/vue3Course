@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="card" @submit.prevent="createPerson" >
+    <form class="card" @submit.prevent="createPerson">
       <h2>Работа с базой данных</h2>
       <div class="form-control">
         <lable for="name">Введите имя</lable>
@@ -10,23 +10,60 @@
         Создать человека
       </button>
     </form>
+    <app-people-list :people="people" @action="getPeople"></app-people-list>
   </div>
 </template>
 
 <script>
+import AppPeopleList from "./components/AppPeopleList.vue";
+import axios from "axios";
 export default {
   name: "App",
-  components: {},
+  components: { AppPeopleList },
   data() {
     return {
       name: "",
+      people: [],
     };
   },
   methods: {
-    createPerson(){
-      // https://vuehttplesson-default-rtdb.europe-west1.firebasedatabase.app/
+    async createPerson() {
+      // https://vuehttplesson-default-rtdb.europe-west1.firebasedatabase.app/users.json
 
-    }
+      const response = await fetch(
+        "https://vuehttplesson-default-rtdb.europe-west1.firebasedatabase.app/users.json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+          body: JSON.stringify({
+            firstName: this.name,
+          }),
+        }
+      );
+      this.name = "";
+      const firebaseData = await response.json();
+      console.log(firebaseData);
+    },
+    getPeople() {
+      return new Promise(() => {
+        axios
+          .get(
+            "https://vuehttplesson-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+          )
+          .then((response) => {
+            let data = response.data;
+            this.people = Object.keys(data).map((key) => {
+              return {
+                id: key,
+                ...data[key],
+              };
+            });
+            console.log(this.people);
+          });
+      });
+    },
   },
 };
 </script>
