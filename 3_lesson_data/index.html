@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="container pt-5" id="app" v-cloak>
+      <div class="card center">
+        <!-- <div v-html="myHTML"></div>
+        <h2 v-text="title"></h2>
+        <h2 v-once>{{title2}}</h2>
+        <h2 v-pre>{{title}}</h2>
+         <button class="btn" @click="title = 'new text'">new text</button> -->
+         <div class="form-control">
+           <input type="text" @keyup.enter="addItem(), log($event)" ref="myInput">
+         </div>
+
+        <ul class="list" v-if="items.length">
+          <li
+            class="list-item"
+            v-for="(item, index) in items"
+            :key="item"
+            @click.stop="items.splice(index, 1)"
+          >
+            <strong>{{ item }} </strong>
+            <input type="text" @click.stop />
+          </li>
+
+          <!-- <li class="list-item" v-for="(item, index) in person" :key="index">
+            {{index}}:{{item}}
+          </li> -->
+        </ul>
+        <h3 v-else>not element</h3>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
