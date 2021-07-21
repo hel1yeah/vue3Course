@@ -11,7 +11,9 @@
         Создать человека
       </button>
     </form>
+    <app-loader v-if="loading" />
     <app-people-list
+      v-else
       :people="people"
       @action="getPeople"
       @remove="removePerson"
@@ -22,15 +24,17 @@
 <script>
 import AppPeopleList from '@/components/AppPeopleList.vue'
 import AppAlert from '@/components/AppAlert.vue'
+import AppLoader from '@/components/AppLoader.vue'
 import axios from 'axios'
 export default {
   name: 'App',
-  components: { AppPeopleList, AppAlert },
+  components: { AppPeopleList, AppAlert, AppLoader },
   data() {
     return {
       name: '',
       people: [],
       alert: null,
+      loading: false,
     }
   },
   methods: {
@@ -56,21 +60,19 @@ export default {
     },
     getPeople() {
       return new Promise(() => {
+        this.loading = true
         axios
           .get(
             'https://vuehttplesson-default-rtdb.europe-west1.firebasedatabase.app/users.json',
           )
           .then((response) => {
             let data = response.data
+            this.loading = false
             this.people = Object.keys(data).map((key) => {
-              return {
-                id: key,
-                ...data[key],
-              }
+              return { id: key, ...data[key] }
             })
           })
           .catch((err) => {
-            console.log(err)
             this.alert = {
               type: 'danger',
               title: 'erorrs!!!',
