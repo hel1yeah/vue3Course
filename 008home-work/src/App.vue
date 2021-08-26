@@ -1,12 +1,14 @@
 <template>
-  <div class="container column">
-    <Form @addForm="addForm" />
-    <Card :posts="posts" />
-  </div>
-  <div class="container">
-    <ButtonDownloadComments @click="getCommets" />
-    <Loader v-if="loading" />
-    <Comments v-else :isComments="comments"></Comments>
+  <div>
+    <div class="container column">
+      <Form @addForm="addForm" />
+      <Card :posts="posts" />
+    </div>
+    <div class="container">
+      <ButtonDownloadComments @click="getCommets" />
+      <Loader v-if="loading" />
+      <Comments v-else :isComments="comments"></Comments>
+    </div>
   </div>
 </template>
 
