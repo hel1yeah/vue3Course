@@ -25,15 +25,5 @@ export default {
   components: {
     AppAllert,
   },
-  data() {
-    return {
-      alert: false,
-    };
-  },
-  methods: {
-    toggleAlet() {
-      this.alert = !this.alert;
-    },
-  },
 };
 </script>

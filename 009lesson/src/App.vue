@@ -27,15 +27,6 @@ export default {
     AppBlock,
     AppAllert,
   },
-  data() {
-    return {
-      alert: false,
-    };
-  },
-  methods: {
-    toggleAlet() {
-      this.alert = !this.alert;
-    },
-  },
+
 };
 </script>
