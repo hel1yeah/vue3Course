@@ -1,32 +1,39 @@
 <template>
   <div class="container">
-    <app-allert
-      v-if="alert"
-      text="This very important message"
-      title="Alert!!"
-      type="warning"
-      closable
-      @close="alert = false"
-    >
-    </app-allert>
     <div class="card">
-      <button class="btn primary" @click="toggleAlet">
-        {{ alert ? "Close" : "Show" }} mesages
+      <h2 v-color:[type]="myColor">Talk with derective</h2>
+      <div class="form-control">
+        <label>
+          active default
+          <input type="text" v-focus />
+        </label>
+      </div>
+      <button class="btn" @click="myColor = 'blue'">make blue</button>
+      <button
+        class="btn"
+        @click="type = type === 'color' ? 'backgroundColor' : 'color'"
+      >
+        make blue
       </button>
+      {{ type }}
     </div>
-    <app-block></app-block>
   </div>
 </template>
 
 <script>
-import AppAllert from "./components/AppAlert.vue";
-import AppBlock from "./components/AppBlock.vue";
+import focusDirective from './components/focusDirective';
+import colorDirective from './components/colorDirective';
 
 export default {
-  components: {
-    AppBlock,
-    AppAllert,
+  directives: {
+    focus: focusDirective,
+    color: colorDirective,
   },
-
+  data() {
+    return {
+      myColor: 'red',
+      type: 'color',
+    };
+  },
 };
 </script>

@@ -1,10 +1,7 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./theme.css";
-import { alertMixin } from "@/components/alertMixin";
-
-
+import { createApp } from 'vue';
+import App from './App.vue';
+import './theme.css';
 
 const app = createApp(App);
-app.mixin(alertMixin);
-app.mount("#app");
+
+app.mount('#app');

@@ -19,11 +19,13 @@
 
 <script>
 import AppAllert from "./AppAlert.vue";
-
+import { alertMixin } from "./alertMixin";
 export default {
   name: "AppBlock",
+  mixins: [alertMixin],
   components: {
     AppAllert,
   },
 };
 </script>
+
