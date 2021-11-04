@@ -1,20 +1,17 @@
 <template>
   <the-navbar></the-navbar>
   <div class="container with-nav">
-    <router-view>
-      <!-- <login></login> -->
-      <!-- <forget></forget> -->
-    </router-view>
+    <!-- <login></login> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import TheNavbar from './components/TheNavbar';
 import Login from './views/Login';
-import Forget from './views/Forget';
 
 export default {
-  components: { TheNavbar, Login, Forget },
+  components: { TheNavbar, Login },
   provide() {
     return {
       emails: [
