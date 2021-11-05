@@ -2,22 +2,29 @@
   <header class="navbar" v-if="visible">
     <h3>GMail</h3>
     <ul class="navbar-menu">
-      <li><a href="/dashboard">Главная</a></li>
+      <li><router-link :to="{ name: 'dashboard' }">Главная</router-link></li>
       <li>
-        <a custom to="/mail">Почта</a>
+        <router-link :to="{ name: 'mail' }">Почта</router-link>
       </li>
-      <li><a href="#">Выйти</a></li>
+      <li><a href="#" @click.prevent="logout">Выйти</a></li>
     </ul>
   </header>
 </template>
 
 <script>
 export default {
+  inject: ['logout'],
   props: {
     visible: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
+
+<style lang="css">
+/* .router-link-active {
+  border: 1px solid red;
+} */
+</style>
