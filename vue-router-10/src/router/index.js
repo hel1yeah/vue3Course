@@ -6,6 +6,7 @@ import Mail from './../views/Mail.vue';
 import Dashboard from './../views/Dashboard.vue';
 
 import AppEmailBody from './../components/AppEmailBody.vue';
+import TheNotFaund from './../components/TheNotFaund.vue';
 
 const routes = [
   { path: '/login', name: 'login', component: Login, alias: '/' },
@@ -17,6 +18,10 @@ const routes = [
     component: Mail,
   },
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
+  {
+    path: '/:found(.*)',
+    component: TheNotFaund,
+  },
 ];
 
 let router = createRouter({
