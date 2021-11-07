@@ -3,27 +3,22 @@
     <div class="card-nav">
       <ul class="list">
         <li class="list-item" v-for="email in emails" :key="email.id">
-          <router-link :to="{ name: 'mail', params: { mailid: email.id } }">
+          <router-link :to="'/mail/' + email.id">
             {{ email.theme }}
           </router-link>
         </li>
       </ul>
     </div>
     <div class="card-body">
-      <app-email-body :mail-id="$route.params.mailid"></app-email-body>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import AppEmailBody from '../components/AppEmailBody';
-
 export default {
-  // components: {AppEmailBody},
   inject: ['emails'],
-  components: {
-    AppEmailBody,
-  },
+  components: {},
 };
 </script>
 

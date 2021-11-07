@@ -4,7 +4,14 @@
     <ul class="navbar-menu">
       <li><router-link :to="{ name: 'dashboard' }">Главная</router-link></li>
       <li>
-        <router-link :to="{ name: 'mail' }">Почта</router-link>
+        <router-link :to="{ name: 'mail' }" custom v-slot="{ navigate, href }">
+          <a
+            href="#"
+            @click="navigate"
+            :class="{ active: $route.path.indexOf(href) !== -1 }"
+            >Почта</a
+          >
+        </router-link>
       </li>
       <li><a href="#" @click.prevent="logout">Выйти</a></li>
     </ul>

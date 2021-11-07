@@ -5,10 +5,17 @@ import Forget from './../views/Forget.vue';
 import Mail from './../views/Mail.vue';
 import Dashboard from './../views/Dashboard.vue';
 
+import AppEmailBody from './../components/AppEmailBody.vue';
+
 const routes = [
   { path: '/login', name: 'login', component: Login, alias: '/' },
   { path: '/forget', name: 'forget', component: Forget },
-  { path: '/mail/:mailId?', name: 'mail', component: Mail },
+  {
+    path: '/mail',
+    name: 'mail',
+    children: [{ path: ':mailId?', component: AppEmailBody, props: true }],
+    component: Mail,
+  },
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
 ];
 

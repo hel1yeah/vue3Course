@@ -14,7 +14,7 @@ export default {
   components: { TheNavbar, Login },
   data() {
     return {
-      isAuth: false,
+      isAuth: true,
     };
   },
   methods: {
