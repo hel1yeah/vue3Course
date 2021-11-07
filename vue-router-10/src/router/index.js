@@ -8,7 +8,7 @@ import Dashboard from './../views/Dashboard.vue';
 const routes = [
   { path: '/login', name: 'login', component: Login, alias: '/' },
   { path: '/forget', name: 'forget', component: Forget },
-  { path: '/mail', name: 'mail', component: Mail },
+  { path: '/mail/:mailId?', name: 'mail', component: Mail },
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
 ];
 
