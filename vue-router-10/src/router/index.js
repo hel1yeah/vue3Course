@@ -10,7 +10,12 @@ import TheNotFaund from './../components/TheNotFaund.vue';
 
 const routes = [
   { path: '/login', name: 'login', component: Login, alias: '/' },
-  { path: '/forget', name: 'forget', component: Forget },
+  {
+    path: '/forget',
+    name: 'forget',
+    component: Forget,
+    meta: { cantEnter: true },
+  },
   {
     path: '/mail',
     name: 'mail',
@@ -29,6 +34,14 @@ let router = createRouter({
   routes,
   linkActiveClass: 'active',
   linkExactActiveClass: 'active',
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.cantEnter) {
+    next(false);
+  } else {
+    next();
+  }
 });
 
 export default router;
