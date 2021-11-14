@@ -1,8 +1,12 @@
 <template>
+  <the-navbar></the-navbar>
   <div class="container with-nav">
     <div class="card">
-      <h1>Про Vuex</h1>
-      <h2>Счетчик 0</h2>
+      <h1>on Vuex</h1>
+      <h2>Counter {{ $store.state.counter }}</h2>
+      <button class="btn primary" @click="$store.commit('increment')">
+        increment
+      </button>
     </div>
   </div>
 </template>
@@ -13,5 +17,9 @@ export default {
   components: {
     TheNavbar,
   },
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
