@@ -1,6 +1,6 @@
 <template>
   <header class="navbar">
-    <strong>Counter {{ counter }}</strong>
+    <strong>Counter {{ getCounter }}</strong>
     <button class="btn danger" @click="decrement">
       decrement
     </button>
@@ -8,19 +8,17 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   data() {
     return {};
   },
   computed: {
-    counter() {
-      return this.$store.state.counter;
-    },
+    ...mapGetters('count', ['getCounter']),
   },
   methods: {
-    decrement() {
-      this.$store.commit('decrement');
-    },
+    ...mapMutations('count', ['decrement']),
   },
 };
 </script>

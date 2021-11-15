@@ -1,27 +1,17 @@
 import { createStore } from 'vuex';
-
+import counterModules from './modules/counter';
 const vuex = createStore({
+  modules: {
+    count: counterModules,
+  },
   state() {
     return {
-      counter: 0,
+      apptitle: 'on Vuex',
     };
   },
-  mutations: {
-    decrement(state) {
-      state.counter = state.counter - 1;
-      console.log('decrement store');
-    },
-    increment(state) {
-      state.counter = state.counter + 1;
-      console.log('increment store');
-    },
-  },
-  actions: {
-    incrementAsync({ commit }) {
-      setTimeout(() => {
-        commit('increment');
-        console.log(commit);
-      }, 1000);
+  getters: {
+    toUpperCaseTitle(state) {
+      return state.apptitle.toUpperCase();
     },
   },
 });
