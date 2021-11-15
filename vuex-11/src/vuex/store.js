@@ -16,6 +16,14 @@ const vuex = createStore({
       console.log('increment store');
     },
   },
+  actions: {
+    incrementAsync({ commit }) {
+      setTimeout(() => {
+        commit('increment');
+        console.log(commit);
+      }, 1000);
+    },
+  },
 });
 
 export default vuex;

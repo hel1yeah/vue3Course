@@ -4,7 +4,7 @@
     <div class="card">
       <h1>on Vuex</h1>
       <h2>Counter {{ $store.state.counter }}</h2>
-      <button class="btn primary" @click="$store.commit('increment')">
+      <button class="btn primary" @click="incrementAsync">
         increment
       </button>
     </div>
@@ -20,6 +20,10 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    incrementAsync() {
+      this.$store.dispatch('incrementAsync');
+    },
+  },
 };
 </script>
