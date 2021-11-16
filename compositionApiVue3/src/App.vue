@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, isRef, computed } from 'vue';
+import { ref, reactive, toRefs, isRef, computed, watch } from 'vue';
 
 export default {
   setup() {
@@ -40,7 +40,10 @@ export default {
 
     const dobleVersion = computed(() => version.value * version.value);
 
-    console.log(dobleVersion.value);
+    watch(dobleVersion, (newValue, oldValue) => {
+      console.log(newValue);
+      console.log(oldValue);
+    });
 
     return {
       name,
