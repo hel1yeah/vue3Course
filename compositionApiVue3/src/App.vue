@@ -16,6 +16,10 @@
       </p>
 
       <button class="btn" @click="changeInfo">Изменить</button>
+
+      <div class="form-control">
+        <input class="input" type="text" ref="textInput" />
+      </div>
     </div>
   </div>
 </template>
@@ -27,15 +31,13 @@ export default {
   setup() {
     const name = ref('VueJS!');
     const version = ref(3);
-
-    // const framework = reactive({
-    //   name: 'VueJS!',
-    //   version: 3,
-    // });
+    const textInput = ref(null);
 
     function changeInfo() {
       name.value = 'Vue.js!!!';
       version.value = 42;
+
+      console.log(textInput.value.value);
     }
 
     const dobleVersion = computed(() => version.value * version.value);
@@ -51,6 +53,7 @@ export default {
       changeInfo,
       // framework,
       dobleVersion,
+      textInput,
     };
   },
 };
