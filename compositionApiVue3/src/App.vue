@@ -24,9 +24,15 @@ export default {
     const name = ref('VueJS!');
     const version = ref(3);
 
+    function changeInfo() {
+      name.value = 'Vue.js!!!';
+      version.value = 42;
+    }
+
     return {
       name,
       version,
+      changeInfo,
     };
   },
 
