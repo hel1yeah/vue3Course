@@ -5,10 +5,14 @@
       <small>data, methods, computed, watch</small>
       <hr />
       <p>
-        Название: <strong>{{ framework.name }}</strong>
+        Название: <strong>{{ name }}</strong>
       </p>
       <p>
-        Версия: <strong>{{ framework.version }}</strong>
+        Версия: <strong>{{ version }}</strong>
+      </p>
+
+      <p>
+        Версия в квадрате: <strong>{{ dobleVersion }}</strong>
       </p>
 
       <button class="btn" @click="changeInfo">Изменить</button>
@@ -17,28 +21,33 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, isRef } from 'vue';
+import { ref, reactive, toRefs, isRef, computed } from 'vue';
 
 export default {
   setup() {
     const name = ref('VueJS!');
     const version = ref(3);
 
-    const framework = reactive({
-      name: 'VueJS!',
-      version: 3,
-    });
+    // const framework = reactive({
+    //   name: 'VueJS!',
+    //   version: 3,
+    // });
 
     function changeInfo() {
       name.value = 'Vue.js!!!';
       version.value = 42;
     }
 
+    const dobleVersion = computed(() => version.value * version.value);
+
+    console.log(dobleVersion.value);
+
     return {
       name,
       version,
       changeInfo,
-      framework,
+      // framework,
+      dobleVersion,
     };
   },
 };
