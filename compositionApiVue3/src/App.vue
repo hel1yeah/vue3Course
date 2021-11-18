@@ -11,16 +11,12 @@
         <input class="input" type="text" v-model="textInput" />
       </div>
     </div>
-    <framework-info
-      :name="name"
-      :version="version"
-      @changeBack="changeBack"
-    ></framework-info>
+    <framework-info @changeBack="changeBack"></framework-info>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs, isRef, computed, watch } from 'vue';
+import { ref, reactive, toRefs, isRef, computed, watch, provide } from 'vue';
 
 import FrameworkInfo from './FrameworkInfo.vue';
 
@@ -42,6 +38,8 @@ export default {
       version.value = 3;
     }
 
+    provide('name', name);
+    provide('version', version);
     // const dobleVersion = computed(() => version.value * version.value);
 
     // watch([dobleVersion, textInput], (newValue, oldValue) => {
@@ -51,8 +49,8 @@ export default {
     // });
 
     return {
-      name,
-      version,
+      // name,
+      // version,
       changeInfo,
       changeBack,
       // framework,

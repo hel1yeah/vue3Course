@@ -14,20 +14,23 @@
 </template>
 
 <script>
-import { computed, version } from 'vue';
+import { computed, inject } from 'vue';
 
 export default {
-  props: ['name', 'version'],
+  // props: ['name', 'version'],
   emits: ['changeBack'],
   setup(props, context) {
-    const dobleVersion = computed(() => props.version * props.version);
+    const dobleVersion = computed(() => version.value * version.value);
 
     function changeBack() {
       context.emit('changeBack', 3);
     }
+    const version = inject('version');
 
     return {
+      name: inject('name'),
       dobleVersion,
+      version,
       changeBack,
     };
   },
