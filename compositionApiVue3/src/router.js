@@ -5,8 +5,8 @@ import ReusablePage from './views/ReusablePage.vue';
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', component: HomePage },
-    { path: '/reusable', component: ReusablePage },
+    { path: '/', name: 'home', component: HomePage },
+    { path: '/reusable', name: 'reusable', component: ReusablePage },
   ],
   linkActiveClass: 'active',
 });
