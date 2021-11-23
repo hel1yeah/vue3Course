@@ -17,26 +17,20 @@
 <script>
 import { useRouter, useRoute } from 'vue-router';
 import AppAlert from '../AppAlert.vue';
-import { ref } from 'vue';
+import { useAlert } from '../use/alert';
 
 export default {
   components: { AppAlert },
   setup() {
-    const alert = ref(false);
-
+    const { alert, toggleAlert, closeAlert } = useAlert();
     const router = useRouter();
     const route = useRoute();
 
-    console.log(route.path);
-
     const navigateTo = () => router.push('/');
 
-    const toggleAlert = () => (alert.value = !alert.value);
-
-    const closeAlert = () => (alert.value = false);
     return {
-      alert,
       navigateTo,
+      alert,
       toggleAlert,
       closeAlert,
     };

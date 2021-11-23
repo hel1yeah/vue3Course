@@ -1,5 +1,5 @@
 <template>
-  <div class="alert" :class="type" @click="closeAlert">
+  <div class="alert" :class="type" @click="$emit('closeAlert')">
     <p class="alert-title">{{ alertTitle }}</p>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga labore
@@ -14,19 +14,9 @@
 </template>
 
 <script>
-import { defineEmit } from 'vue';
-
 export default {
   emits: ['closeAlert'],
   props: ['alertTitle', 'type'],
-  setup() {
-    const emit = defineEmit(['closeAlert']);
-
-    const handleClose = () => {
-      emit('close');
-    };
-    return {};
-  },
 };
 </script>
 
