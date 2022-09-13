@@ -11,19 +11,21 @@
     {{ obj2.width }}
     ({{ doubleV }})
     <br>
-    <router-view></router-view>
+    <AboutView
+      :name="name"
+      :color="obj2.color"
+      :version="num"
+      @changeVersion="changeVersion"
+    />
   </header>
 </template>
 
 <script setup>
-import {RouterView} from 'vue-router'
+import AboutView from './views/AboutView.vue'
 
 import {
   ref,
   reactive,
-  toRefs,
-  isRef,
-  isReactive,
   computed,
   watch,
 }
@@ -51,6 +53,8 @@ watch(doubleV, (newv, oldv) => {
   console.log('watch', oldv)
   console.log('watch', newv)
 })
+
+const changeVersion = (arg) => num.value = arg
 
 </script>
 
